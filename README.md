@@ -16,3 +16,7 @@ This is intended to be performed in memory where you don’t have the usage of a
    * Then each degree in a longitude is the same as with latitude = 111111 m/degree
    * However longitude changes as moving away from the Equator. To correct this :
    * longitude = 111111*cos(latitude) 
+   
+## Testing
+
+There are 10 tests for the different functionalities implemented.
