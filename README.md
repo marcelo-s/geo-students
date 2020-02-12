@@ -1,10 +1,9 @@
-#Geo-Students
+# Geo-Students
 Given each student has a geolocation lat/lon point, how would you determine which students are physically in any classroom?  
-
 
 Write a function that returns the students if they are in a classroom.  
 
-Assumptions
+## Assumptions
 
 - Each classroom has a square shape of 20m X 20m and none of the classrooms intersect.
 - Students are dimensionless outside of their latitude / longitude point.
