@@ -14,5 +14,5 @@ This is intended to be performed in memory where you don’t have the usage of a
    * Then each degree in a latitude is 10000000/90 = 111111 m/degree
    * Equatorial circumference of the earth is more or less the same as the polar circumference.
    * Then each degree in a longitude is the same as with latitude = 111111 m/degree
-   * However longitude changes as moving away from the Equator to correct this :
-   * distance = 111111*cos(latitude) 
+   * However longitude changes as moving away from the Equator. To correct this :
+   * longitude = 111111*cos(latitude) 
