@@ -4,7 +4,10 @@ import entity.Classroom;
 import entity.GeoCoordinate;
 import entity.Student;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -32,26 +35,35 @@ public class GeoCalculator {
         return students.stream().filter(student -> isInAClassroom(student, classrooms)).collect(Collectors.toList());
     }
 
-    public static List<Student> getStudentsClustersInClassrooms(List<Student> students, List<Classroom> classrooms) {
+    public static List<Student> getStudentsClustersInClassrooms(List<Student> students, List<Classroom> classrooms, int clusterSize) {
+        Map<Integer, List<Student>> classroomsWithStudents = getStudentsInClassroomsMap(students, classrooms);
+        return getStudentsInClusters(classroomsWithStudents, clusterSize);
+    }
+
+    private static List<Student> getStudentsInClusters(Map<Integer, List<Student>> classroomsWithStudents, int clusterSize) {
+        ArrayList<Student> studentsInCluster = new ArrayList<>();
+        for (List<Student> studentsInClassroom : classroomsWithStudents.values()) {
+            if (studentsInClassroom.size() >= clusterSize) {
+                studentsInCluster.addAll(studentsInClassroom);
+            }
+        }
+        return studentsInCluster;
+    }
+
+    private static Map<Integer, List<Student>> getStudentsInClassroomsMap(List<Student> students, List<Classroom> classrooms) {
         Map<Integer, List<Student>> classroomsWithStudents = new HashMap<>();
-        for(Student student : students) {
-            for(int i = 0; i < classrooms.size(); i++) {
+        for (Student student : students) {
+            for (int i = 0; i < classrooms.size(); i++) {
                 Classroom classroom = classrooms.get(i);
-                if(isWithinLimits(student.getGeoCoordinate(), classroom.getGeoCoordinate())) {
-                    if(!classroomsWithStudents.containsKey(i)) {
+                if (isWithinLimits(student.getGeoCoordinate(), classroom.getGeoCoordinate())) {
+                    if (!classroomsWithStudents.containsKey(i)) {
                         classroomsWithStudents.put(i, new ArrayList<>());
                     }
                     classroomsWithStudents.get(i).add(student);
                 }
             }
         }
-        ArrayList<Student> studentsInCluster = new ArrayList<>();
-        for(List<Student> studentsInClassroom : classroomsWithStudents.values()) {
-            if(studentsInClassroom.size() >= 2) {
-                studentsInCluster.addAll(studentsInClassroom);
-            }
-        }
-        return studentsInCluster;
+        return classroomsWithStudents;
     }
 
 

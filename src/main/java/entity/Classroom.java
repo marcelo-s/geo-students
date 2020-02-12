@@ -5,7 +5,7 @@ public class Classroom {
     private String name;
     private GeoCoordinate geoCoordinate;
 
-    public Classroom(String name, GeoCoordinate geoCoordinate){
+    public Classroom(String name, GeoCoordinate geoCoordinate) {
         this.name = name;
         this.geoCoordinate = geoCoordinate;
     }
