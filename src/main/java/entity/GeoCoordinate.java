@@ -2,6 +2,9 @@ package entity;
 
 import java.util.Objects;
 
+/**
+ * Entity class that models a geographic coordinate
+ */
 public class GeoCoordinate {
 
     private final double latitude;

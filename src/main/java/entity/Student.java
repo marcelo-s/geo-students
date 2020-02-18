@@ -2,6 +2,9 @@ package entity;
 
 import java.util.Objects;
 
+/**
+ * Entity class that models a student with geo location
+ */
 public class Student implements Comparable<Student> {
     private String name;
     private GeoCoordinate geoCoordinate;
