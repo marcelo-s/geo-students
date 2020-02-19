@@ -123,7 +123,7 @@ public class MainTest {
     }
 
     @Test
-    public void testListOfStudentsInClasroomsOneStudent() {
+    public void testListOfStudentsInClassroomsOneStudent() {
         // john_student = { 'name': 'John Wilson', 'latitude': 34.069849, 'longitude': -118.443539 } # engineering
         GeoCoordinate geoCoordinate1 = new GeoCoordinate(34.069849, -118.443539);
         Student student1 = new Student("John Wilson", geoCoordinate1);
@@ -232,7 +232,7 @@ public class MainTest {
         List<Classroom> classrooms = Arrays.asList(classroom1, classroom2, classroom3, classroom4);
 
         int clusterSize = 2;
-        List<Student> studentsInClassrooms = GeoCalculator.getStudentsClustersInClassrooms(students, classrooms, 2);
+        List<Student> studentsInClassrooms = GeoCalculator.getStudentsClustersInClassrooms(students, classrooms, clusterSize);
         assertEquals(2, studentsInClassrooms.size());
 
         assertTrue(studentsInClassrooms.contains(student1));
